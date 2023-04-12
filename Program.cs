@@ -7,8 +7,6 @@ namespace Program
         static void Main()
         {
 
-
-
             while (true)
             {
                 Console.WriteLine("Lols.GG Terminal");
