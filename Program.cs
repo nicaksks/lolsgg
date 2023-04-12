@@ -1,12 +1,11 @@
 ﻿using lolsgg;
 
-namespace Program
+namespace League
 {
     class Program
     {
         static void Main()
         {
-
             while (true)
             {
                 Console.WriteLine("Lols.GG Terminal");
