@@ -8,24 +8,24 @@ namespace lolsgg
         {
             "br", "eune", "euw", "jp", "kr", "lan", "las", "na", "oce", "ph", "sg", "th", "tw", "vn", "tr", "ru"
         };
-        public static string search(string region, string summoner)
+        public static string Search(string? region, string? summoner)
         {
 
-            if (string.IsNullOrWhiteSpace(region) || string.IsNullOrWhiteSpace(summoner))
+            if (!Regions.Contains(region?.ToLower()))
             {
-                return "Está faltando Região ou Nome de Invocador";
+                return $"O Lolsgg não possui suporte para a região {region?.ToUpper()}";
             };
 
-            if (!Regions.Contains(region.ToLower()))
+            
+            if (summoner?.Length <= 2 || summoner?.Length >= 17)
             {
-                return $"O Lolsgg não possui suporte para a região {region.ToUpper()}";
+                return "O nome de invocador tem que ser maior que 3 e menor 16 digitos.";
             };
 
             try
             {
                 var url = $"https://lols.gg/pt/name/checker/{region}/{summoner}/";
-                HtmlWeb web = new HtmlWeb();
-                web.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 OPR/97.0.0.0"; ;
+                HtmlWeb web = new();
                 var htmlDoc = web.Load(url);
 
                 var node = htmlDoc.DocumentNode.SelectSingleNode("//h4[@class='text-center']");
