@@ -17,7 +17,7 @@ namespace lolsgg
             };
 
             
-            if (summoner?.Length <= 2 || summoner?.Length >= 17)
+            if (summoner?.Length < 3 || summoner?.Length > 16)
             {
                 return "O nome de invocador tem que ser maior que 3 e menor 16 digitos.";
             };
